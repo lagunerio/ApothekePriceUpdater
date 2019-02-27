@@ -3,7 +3,7 @@
 function    : Get Data from Mysql
 """
 import pymysql
-import pymysql.cursor
+
 
 class MysqlConnector():
     def __init__(self, dbhost, userid, passwd, dbname, tbname):
@@ -27,7 +27,6 @@ class MysqlConnector():
         return mysql
 
     def ReadMysql(self, sql):
-
         mysql = self.ConnectMysql()
         result = []
         ## get data as list ##
@@ -36,7 +35,7 @@ class MysqlConnector():
             result = cursor.fetchall()
         return result
 
-    def MysqlUpdate(self, sql):
+    def UpdateMysql(self, sql):
         mysql = self.ConnectMysql()
         result = []
         ## execute sql ##
@@ -44,3 +43,12 @@ class MysqlConnector():
             cursor.execute(sql)
             mysql.commit()
             mysql.close()
+
+    def GetSellingList():
+        mysql = MysqlConnector(DBHOST, USERID, PASSWD, DBNAME, TBNAME)
+        on_sale = mysql.ReadMysql(SQL_GET_ALL_ID)
+        return on_sale
+
+
+
+def
